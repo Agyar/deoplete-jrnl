@@ -32,7 +32,7 @@ class Source(Base):
 
     def on_init(self, context):
         """ build cache of jrnl tags """
-        jrnl_out = subprocess.check_output('jrnl --tags', shell=True)
+        jrnl_out = subprocess.check_output('jrnl --tags | sort', shell=True)
         candidates = re.findall(r'@\w+', jrnl_out.decode('utf-8'))
         self.__cache = [{'word': candidate[1:]} for candidate in candidates]
 
