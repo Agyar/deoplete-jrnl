@@ -38,6 +38,7 @@ class Source(Base):
 
     def get_complete_position(self, context):
         """ define position to where should this be activated """
+        pat = None
         pattern = self.TAG_PATTERN.finditer(context['input'])
         for pruning in pattern:
             pat = pruning
